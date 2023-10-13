@@ -1,17 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Switch, Row, Col } from "antd";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
 
+interface Props {
+  children: ReactNode;
+}
+
 const NavBar = styled.div`
   position: sticky;
   top: 0px;
 `;
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children }: Props) => {
   // const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <NavBar>
@@ -28,7 +31,7 @@ const AppLayout = ({ children }) => {
             <Switch defaultChecked onChange={onChange} />
           </div>
         </Col>
-
+        <form action=""></form>
         <Col
           xs={20}
           md={20}
@@ -98,10 +101,6 @@ const AppLayout = ({ children }) => {
 
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);
-};
-
-AppLayout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default AppLayout;
