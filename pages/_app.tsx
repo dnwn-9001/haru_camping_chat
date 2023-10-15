@@ -1,10 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
 import wrapper from "../store/configureStore";
 
-const App = ({ Component }) => {
+interface Prop {
+  Component: () => React.JSX.Element;
+}
+
+const App = ({ Component }: Prop) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <>
       <Head>
@@ -14,10 +23,6 @@ const App = ({ Component }) => {
       <Component />
     </>
   );
-};
-
-App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
 };
 
 export default wrapper.withRedux(App);
