@@ -15,7 +15,7 @@ const UserProfile = () => {
   const onLogOut = useCallback(() => {
     dispatch(logoutAction());
     // setIsLoggedIn(false);
-  });
+  }, []);
 
   return (
     <AccountBox
