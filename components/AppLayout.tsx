@@ -31,7 +31,6 @@ const AppLayout = ({ children }: Props) => {
             <Switch defaultChecked onChange={onChange} />
           </div>
         </Col>
-        <form action=""></form>
         <Col
           xs={20}
           md={20}
@@ -42,13 +41,11 @@ const AppLayout = ({ children }: Props) => {
         >
           <div>
             <Link href="/">
-              <a>
-                <img
-                  src="/images/logo.png"
-                  alt="하루캠핑 로고"
-                  style={{ width: "130px" }}
-                />
-              </a>
+              <img
+                src="/images/logo.png"
+                alt="하루캠핑 로고"
+                style={{ width: "130px" }}
+              />
             </Link>
           </div>
         </Col>
@@ -64,25 +61,23 @@ const AppLayout = ({ children }: Props) => {
         >
           {/* {isLoggedIn ? (
             <Link href="/login">
-              <a>
                 <Avatar
                   icon={<UserOutlined />}
                   style={{
                     backgroundColor: "#87d068",
                   }}
                 />
-              </a>
+        
             </Link>
           ) : (
             <Link href="/profile">
-              <a>
+            
                 <Avatar
                   icon={<UserOutlined />}
                   style={{
                     backgroundColor: "#87d068",
                   }}
                 />
-              </a>
             </Link>
           )} */}
         </Col>
@@ -99,7 +94,7 @@ const AppLayout = ({ children }: Props) => {
   );
 };
 
-const onChange = (checked) => {
+const onChange = (checked: boolean) => {
   console.log(`switch to ${checked}`);
 };
 
