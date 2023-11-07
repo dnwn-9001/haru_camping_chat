@@ -1,17 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Switch, Row, Col } from "antd";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
 
+interface Props {
+  children: ReactNode;
+}
+
 const NavBar = styled.div`
   position: sticky;
   top: 0px;
 `;
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children }: Props) => {
   // const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <NavBar>
@@ -28,7 +31,6 @@ const AppLayout = ({ children }) => {
             <Switch defaultChecked onChange={onChange} />
           </div>
         </Col>
-
         <Col
           xs={20}
           md={20}
@@ -39,13 +41,11 @@ const AppLayout = ({ children }) => {
         >
           <div>
             <Link href="/">
-              <a>
-                <img
-                  src="/images/logo.png"
-                  alt="하루캠핑 로고"
-                  style={{ width: "130px" }}
-                />
-              </a>
+              <img
+                src="/images/logo.png"
+                alt="하루캠핑 로고"
+                style={{ width: "130px" }}
+              />
             </Link>
           </div>
         </Col>
@@ -61,25 +61,23 @@ const AppLayout = ({ children }) => {
         >
           {/* {isLoggedIn ? (
             <Link href="/login">
-              <a>
                 <Avatar
                   icon={<UserOutlined />}
                   style={{
                     backgroundColor: "#87d068",
                   }}
                 />
-              </a>
+        
             </Link>
           ) : (
             <Link href="/profile">
-              <a>
+            
                 <Avatar
                   icon={<UserOutlined />}
                   style={{
                     backgroundColor: "#87d068",
                   }}
                 />
-              </a>
             </Link>
           )} */}
         </Col>
@@ -96,12 +94,8 @@ const AppLayout = ({ children }) => {
   );
 };
 
-const onChange = (checked) => {
+const onChange = (checked: boolean) => {
   console.log(`switch to ${checked}`);
-};
-
-AppLayout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default AppLayout;

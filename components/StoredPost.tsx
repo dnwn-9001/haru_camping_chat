@@ -1,13 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { List } from "antd";
+
+interface PostedItem {
+  title: string;
+  content: string;
+}
+
+interface Props {
+  header: string;
+  data: PostedItem[];
+}
 
 const StoredList = styled(List)`
   margin-top: 50px;
 `;
 
-const StoredPost = ({ header, data }) => {
+const StoredPost = ({ header, data }: Props) => {
   return (
     <>
       <StoredList
@@ -21,7 +30,7 @@ const StoredPost = ({ header, data }) => {
           pageSize: 3,
         }}
         dataSource={data}
-        renderItem={(item) => (
+        renderItem={(item: PostedItem) => (
           <List.Item
             key={item.title}
             extra={
@@ -34,7 +43,7 @@ const StoredPost = ({ header, data }) => {
           >
             <List.Item.Meta
               title={<a>{item.title}</a>}
-              description={item.description}
+              description={item.content}
             />
             {item.content}
           </List.Item>
@@ -42,11 +51,6 @@ const StoredPost = ({ header, data }) => {
       />
     </>
   );
-};
-
-StoredPost.propTypes = {
-  header: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
 };
 
 export default StoredPost;

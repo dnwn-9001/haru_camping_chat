@@ -1,4 +1,4 @@
-import React, { useState, useCallback, ChangeEvent } from "react";
+import React, { useState, useCallback, ChangeEvent, useEffect } from "react";
 import { Button, Form, Input } from "antd";
 import Link from "next/link";
 // import PropTypes from "prop-types";
@@ -84,9 +84,7 @@ const LoginForm = () => {
           <LoginButton type="primary" htmlType="submit" loading={false}>
             로그인
           </LoginButton>
-          <Link href="/signup">
-            <SignupBtn>회원가입</SignupBtn>
-          </Link>
+          <Link href="/signup">회원가입</Link>
         </ButtonWrapper>
       </Form>
     </>
