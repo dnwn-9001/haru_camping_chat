@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import Head from "next/head";
-import AppLayout from "../components/AppLayout";
+import AppLayout from "../../components/AppLayout";
 import styled from "styled-components";
-import SignUpForm from "../components/SignUpForm";
+import SignUpForm from "../../components/SignUpForm";
 
 const SignUpTitle = styled.h1`
   margin: auto;
