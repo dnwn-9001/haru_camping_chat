@@ -11,9 +11,9 @@ const AccountBox = styled(Card)`
 `;
 
 const UserProfile = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const onLogOut = useCallback(() => {
-    dispatch(logoutAction());
+    // dispatch(logoutAction());
     // setIsLoggedIn(false);
   }, []);
 
