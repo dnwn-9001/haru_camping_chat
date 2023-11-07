@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+"use client";
+import React, { useState, useEffect, ReactElement } from "react";
 import AppLayout from "../components/AppLayout";
 import Head from "next/head";
 import styled from "styled-components";
@@ -89,15 +90,15 @@ const Home = () => {
     );
     const totalNum = allParallaxImage.length;
 
-    window.addEventListener("scroll", () => {
-      setScrollNum(window.scrollY);
+    // window.addEventListener("scroll", () => {
+    //   setScrollNum(window.scrollY);
 
-      allParallaxImage.forEach((item, index) => {
-        item.style.transform = `perspective(500px) translate3d(0,0, ${
-          scrollNum / (2 * (totalNum - index))
-        }px)`;
-      });
-    });
+    //   allParallaxImage.forEach((item, index) => {
+    //     item.style.transform = `perspective(500px) translate3d(0,0, ${
+    //       scrollNum / (2 * (totalNum - index))
+    //     }px)`;
+    //   });
+    // });
   }, [scrollNum]);
 
   return (
@@ -105,33 +106,35 @@ const Home = () => {
       <Head>
         <title>Haru Camping</title>
       </Head>
-      <AppLayout>
-        <MainPageSection>
-          <ImageWrap>
-            <ParallaxImageCommon></ParallaxImageCommon>
-            <ParallaxImageCommon></ParallaxImageCommon>
-            <ParallaxImageCommon></ParallaxImageCommon>
-            <ParallaxImageCommon></ParallaxImageCommon>
-            <ParallaxImageCommon></ParallaxImageCommon>
-          </ImageWrap>
-        </MainPageSection>
-        <SubPageSection>
-          <SubPageInnerWrap>
-            <PhraseWrap>
-              <PhraseImg
-                src="/images/main_phrase.png"
-                alt="집에서 놀고 있는 캠핑 용품으로 용돈 벌어요!"
-              />
-            </PhraseWrap>
-            <BtnWrap>
-              <BtnImgCommon src="/images/btn_rental.png" alt="대여해요" />
-              <BtnImgCommon src="/images/btn_vote.png" alt="익명투표" />
-            </BtnWrap>
-          </SubPageInnerWrap>
-        </SubPageSection>
-      </AppLayout>
+      <MainPageSection>
+        <ImageWrap>
+          <ParallaxImageCommon></ParallaxImageCommon>
+          <ParallaxImageCommon></ParallaxImageCommon>
+          <ParallaxImageCommon></ParallaxImageCommon>
+          <ParallaxImageCommon></ParallaxImageCommon>
+          <ParallaxImageCommon></ParallaxImageCommon>
+        </ImageWrap>
+      </MainPageSection>
+      <SubPageSection>
+        <SubPageInnerWrap>
+          <PhraseWrap>
+            <PhraseImg
+              src="/images/main_phrase.png"
+              alt="집에서 놀고 있는 캠핑 용품으로 용돈 벌어요!"
+            />
+          </PhraseWrap>
+          <BtnWrap>
+            <BtnImgCommon src="/images/btn_rental.png" alt="대여해요" />
+            <BtnImgCommon src="/images/btn_vote.png" alt="익명투표" />
+          </BtnWrap>
+        </SubPageInnerWrap>
+      </SubPageSection>
     </>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <AppLayout>{page}</AppLayout>;
 };
 
 export default Home;

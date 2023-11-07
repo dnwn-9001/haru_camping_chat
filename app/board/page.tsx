@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
-import AppLayout from "../components/AppLayout";
+import AppLayout from "../../components/AppLayout";
 import Head from "next/head";
 import styled from "styled-components";
-import InputSearchBox from "../components/Input";
-import WriteBtn from "../components/WriteBtn";
+import InputSearchBox from "../../components/Input";
+import WriteBtn from "../../components/WriteBtn";
 
 const RowDirection = styled.div`
   display: flex;
