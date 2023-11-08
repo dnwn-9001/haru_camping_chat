@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import wrapper from "../../store/configureStore";
+import wrapper from "../store/configureStore";
 
 interface Prop {
   Component: () => React.JSX.Element;
