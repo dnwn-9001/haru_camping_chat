@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Head from "next/head";
-import AppLayout from "../../components/AppLayout";
 import UserProfile from "../../components/UserProfile";
 import StoredPost from "../../components/StoredPost";
 
@@ -21,11 +20,9 @@ const Profile = () => {
       <Head>
         <title>내 프로필 | Haru Camping</title>
       </Head>
-      <AppLayout>
-        <UserProfile />
-        <StoredPost header="보관한 글" data={storeP} />
-        <StoredPost header="내가 쓴 글" data={myP} />
-      </AppLayout>
+      <UserProfile />
+      <StoredPost header="보관한 글" data={storeP} />
+      <StoredPost header="내가 쓴 글" data={myP} />
     </>
   );
 };

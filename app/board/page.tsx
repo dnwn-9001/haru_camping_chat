@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import AppLayout from "../../components/AppLayout";
 import Head from "next/head";
 import styled from "styled-components";
 import InputSearchBox from "../../components/Input";
@@ -33,16 +32,13 @@ const Board = () => {
       <Head>
         <title>게시판 | Haru Camping</title>
       </Head>
-
-      <AppLayout>
-        <TitleAndBtnsWrap>
-          <BoardTitle>대여해요</BoardTitle>
-          <BtnsWrap>
-            <WriteBtn />
-            <InputSearchBox></InputSearchBox>
-          </BtnsWrap>
-        </TitleAndBtnsWrap>
-      </AppLayout>
+      <TitleAndBtnsWrap>
+        <BoardTitle>대여해요</BoardTitle>
+        <BtnsWrap>
+          <WriteBtn />
+          <InputSearchBox></InputSearchBox>
+        </BtnsWrap>
+      </TitleAndBtnsWrap>
     </>
   );
 };
