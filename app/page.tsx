@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect, ReactElement } from "react";
-import AppLayout from "../components/AppLayout";
-import Head from "next/head";
 import styled from "styled-components";
 
 const MainPageSection = styled.section`
@@ -103,9 +101,6 @@ const Home = () => {
 
   return (
     <>
-      <Head>
-        <title>Haru Camping</title>
-      </Head>
       <MainPageSection>
         <ImageWrap>
           <ParallaxImageCommon></ParallaxImageCommon>
@@ -131,10 +126,6 @@ const Home = () => {
       </SubPageSection>
     </>
   );
-};
-
-Home.getLayout = function getLayout(page: ReactElement) {
-  return <AppLayout>{page}</AppLayout>;
 };
 
 export default Home;
