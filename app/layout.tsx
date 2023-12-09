@@ -93,7 +93,7 @@ export default function RootLayout({
             </Col>
           </Row>
         </NavBar>
-        <Row>{children}</Row>
+        {children}
       </Body>
     </html>
   );
