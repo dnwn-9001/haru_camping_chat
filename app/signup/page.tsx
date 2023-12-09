@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Head from "next/head";
-import AppLayout from "../../components/AppLayout";
 import styled from "styled-components";
 import SignUpForm from "../../components/SignUpForm";
 
@@ -18,10 +17,8 @@ const Signup = () => {
       <Head>
         <title>회원가입 | Haru Camping</title>
       </Head>
-      <AppLayout>
-        <SignUpTitle>회원가입</SignUpTitle>
-        <SignUpForm />
-      </AppLayout>
+      <SignUpTitle>회원가입</SignUpTitle>
+      <SignUpForm />
     </>
   );
 };
