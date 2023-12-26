@@ -2,9 +2,12 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import styled from "styled-components";
-import { Avatar, Switch, Row, Col } from "antd";
+import { Switch, Row, Col } from "antd";
+import UserIcon from "../components/UserIcon";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const isLoggedIn = false;
 
 const Body = styled.body`
   margin: 0;
@@ -66,30 +69,18 @@ export default function RootLayout({
               style={{
                 margin: "auto",
                 textAlign: "right",
-                paddingRight: "20px",
+                paddingRight: "30px",
               }}
             >
-              {/* {isLoggedIn ? (
-            <Link href="/login">
-                <Avatar
-                  icon={<UserOutlined />}
-                  style={{
-                    backgroundColor: "#87d068",
-                  }}
-                />
-        
-            </Link>
-          ) : (
-            <Link href="/profile">
-            
-                <Avatar
-                  icon={<UserOutlined />}
-                  style={{
-                    backgroundColor: "#87d068",
-                  }}
-                />
-            </Link>
-          )} */}
+              {isLoggedIn ? (
+                <Link href="/profile">
+                  <UserIcon />
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <UserIcon />
+                </Link>
+              )}
             </Col>
           </Row>
         </NavBar>
