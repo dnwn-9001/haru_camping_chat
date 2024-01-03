@@ -1,6 +1,7 @@
 "use client";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 import { Switch, Row, Col } from "antd";
 import UserIcon from "../components/UserIcon";
@@ -54,15 +55,15 @@ export default function RootLayout({
             >
               <div>
                 <Link href="/">
-                  <img
+                  <Image
                     src="/images/logo.png"
+                    width={130}
+                    height={90}
                     alt="하루캠핑 로고"
-                    style={{ width: "130px" }}
                   />
                 </Link>
               </div>
             </Col>
-
             <Col
               xs={2}
               md={2}
