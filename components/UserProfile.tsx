@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
 import { Card, Button } from "antd";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { logoutAction } from "../reducers";
+import { supabase } from "@/lib/supabase";
 
 const AccountBox = styled(Card)`
   width: 100%;
@@ -11,16 +10,17 @@ const AccountBox = styled(Card)`
 `;
 
 const UserProfile = () => {
-  // const dispatch = useDispatch();
-  const onLogOut = useCallback(() => {
-    // dispatch(logoutAction());
-    // setIsLoggedIn(false);
-  }, []);
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+
+    if (!error) console.log("로그아웃 완료");
+    else console.log("로그아웃 실패", error.message);
+  }
 
   return (
     <AccountBox
       title="계정 정보"
-      extra={<Button onClick={onLogOut}>로그아웃</Button>}
+      extra={<Button onClick={signOut}>로그아웃</Button>}
     >
       <p>Card content</p>
       <p>Card content</p>

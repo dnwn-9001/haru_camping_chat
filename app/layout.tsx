@@ -1,10 +1,14 @@
 "use client";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
-import { Avatar, Switch, Row, Col } from "antd";
+import { Switch, Row, Col } from "antd";
+import UserIcon from "../components/UserIcon";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const isLoggedIn = false;
 
 const Body = styled.body`
   margin: 0;
@@ -51,45 +55,33 @@ export default function RootLayout({
             >
               <div>
                 <Link href="/">
-                  <img
+                  <Image
                     src="/images/logo.png"
+                    width={130}
+                    height={90}
                     alt="하루캠핑 로고"
-                    style={{ width: "130px" }}
                   />
                 </Link>
               </div>
             </Col>
-
             <Col
               xs={2}
               md={2}
               style={{
                 margin: "auto",
                 textAlign: "right",
-                paddingRight: "20px",
+                paddingRight: "30px",
               }}
             >
-              {/* {isLoggedIn ? (
-            <Link href="/login">
-                <Avatar
-                  icon={<UserOutlined />}
-                  style={{
-                    backgroundColor: "#87d068",
-                  }}
-                />
-        
-            </Link>
-          ) : (
-            <Link href="/profile">
-            
-                <Avatar
-                  icon={<UserOutlined />}
-                  style={{
-                    backgroundColor: "#87d068",
-                  }}
-                />
-            </Link>
-          )} */}
+              {isLoggedIn ? (
+                <Link href="/profile">
+                  <UserIcon />
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <UserIcon />
+                </Link>
+              )}
             </Col>
           </Row>
         </NavBar>
