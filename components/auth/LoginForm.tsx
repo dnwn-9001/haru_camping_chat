@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { supabase } from "@/lib/supabase";
-import { makeStore, AppStore } from "../store/store";
-import { useAppSelector, useAppDispatch, useAppStore } from "../store/hooks";
+import { supabase } from "src/lib/supabase";
+import { makeStore, AppStore } from "store/store";
+import { useAppSelector, useAppDispatch, useAppStore } from "store/hooks";
 
 const LoginTitle = styled.h1`
   margin: auto;

@@ -2,8 +2,8 @@
 import React from "react";
 import Head from "next/head";
 import styled from "styled-components";
-import InputSearchBox from "../../components/Input";
-import WriteBtn from "../../components/WriteBtn";
+import InputSearchBox from "components/common/Input";
+import WriteBtn from "components/common/WriteBtn";
 
 const RowDirection = styled.div`
   display: flex;

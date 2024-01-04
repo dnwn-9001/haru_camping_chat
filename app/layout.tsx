@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import { Switch, Row, Col } from "antd";
-import UserIcon from "../components/UserIcon";
+import UserIcon from "components/user/UserIcon";
 
 const inter = Inter({ subsets: ["latin"] });
 
