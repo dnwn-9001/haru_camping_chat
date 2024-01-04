@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Card, Button } from "antd";
 import styled from "styled-components";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "src/lib/supabase";
 
 const AccountBox = styled(Card)`
   width: 100%;
