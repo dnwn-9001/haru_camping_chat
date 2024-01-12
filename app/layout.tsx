@@ -8,18 +8,6 @@ import UserIcon from "components/user/UserIcon";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const isLoggedIn = false;
-
-const Body = styled.body`
-  margin: 0;
-  height: 100vh;
-`;
-
-const NavBar = styled.div`
-  position: sticky;
-  top: 0px;
-`;
-
 export default function RootLayout({
   children,
 }: {
@@ -73,15 +61,7 @@ export default function RootLayout({
                 paddingRight: "30px",
               }}
             >
-              {isLoggedIn ? (
-                <Link href="/profile">
-                  <UserIcon />
-                </Link>
-              ) : (
-                <Link href="/login">
-                  <UserIcon />
-                </Link>
-              )}
+              <UserIcon />
             </Col>
           </Row>
         </NavBar>
@@ -90,6 +70,16 @@ export default function RootLayout({
     </html>
   );
 }
+
+const Body = styled.body`
+  margin: 0;
+  height: 100vh;
+`;
+
+const NavBar = styled.div`
+  position: sticky;
+  top: 0px;
+`;
 
 const onChange = (checked: boolean) => {
   console.log(`switch to ${checked}`);
