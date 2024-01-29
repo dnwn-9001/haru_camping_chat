@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { Inter } from "next/font/google";
+import { gamja_flower } from "./fonts";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect } from "react";
@@ -13,8 +12,6 @@ import { userLoggedIn, userLoggedOut } from "store/features/user/authSlice";
 import { setUserInfo } from "store/features/user/userSlice";
 import GetUserInfo from "utils/getUserInfo";
 import { useRouter, usePathname } from "next/navigation";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -66,7 +63,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <title>Haru Camping</title>
       </head>
-      <Body className={inter.className}>
+      <Body className={gamja_flower.className}>
         <NavBar>
           <Row>
             <Col
