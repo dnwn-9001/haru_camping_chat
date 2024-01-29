@@ -1,34 +1,26 @@
 "use client";
-import React, { useState, useEffect, ReactElement } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "store/hooks";
-import { userLoggedIn, userLoggedOut } from "store/features/user/authSlice";
 
 const Home = () => {
   const [scrollNum, setScrollNum] = useState(0);
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const authToken = window.localStorage.getItem("oauth_provider_token");
-    authToken ? dispatch(userLoggedIn()) : dispatch(userLoggedOut());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const allParallaxImage = document.querySelectorAll(
+  //     `${ParallaxImageCommon}`
+  //   );
+  //   const totalNum = allParallaxImage.length;
 
-  useEffect(() => {
-    const allParallaxImage = document.querySelectorAll(
-      `${ParallaxImageCommon}`
-    );
-    const totalNum = allParallaxImage.length;
+  //   // window.addEventListener("scroll", () => {
+  //   //   setScrollNum(window.scrollY);
 
-    // window.addEventListener("scroll", () => {
-    //   setScrollNum(window.scrollY);
-
-    //   allParallaxImage.forEach((item, index) => {
-    //     item.style.transform = `perspective(500px) translate3d(0,0, ${
-    //       scrollNum / (2 * (totalNum - index))
-    //     }px)`;
-    //   });
-    // });
-  }, [scrollNum]);
+  //   //   allParallaxImage.forEach((item, index) => {
+  //   //     item.style.transform = `perspective(500px) translate3d(0,0, ${
+  //   //       scrollNum / (2 * (totalNum - index))
+  //   //     }px)`;
+  //   //   });
+  //   // });
+  // }, [scrollNum]);
 
   return (
     <>
