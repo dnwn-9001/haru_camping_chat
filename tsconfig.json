@@ -23,7 +23,8 @@
       "app/*": ["./app/*"],
       "components/*": ["./components/*"],
       "reducers/*": ["./reducers/*"],
-      "store/*": ["./store/*"]
+      "store/*": ["./store/*"],
+      "utils/*": ["./utils/*"]
     }
   },
   "include": [
