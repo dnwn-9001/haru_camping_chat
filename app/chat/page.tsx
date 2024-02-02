@@ -1,6 +1,7 @@
 "use client";
-import UserInfoCard from "components/user/UserInfoCard";
 import styled from "styled-components";
+import UserInfoCard from "components/user/UserInfoCard";
+import ChatRoom from "components/chat/ChatRoom";
 
 const Chat = () => {
   return (
@@ -22,9 +23,10 @@ const Chat = () => {
             <AreaName>제주</AreaName>
           </AsideCard>
           <ChatArea>
-            <h3 style={{ position: "relative", top: "40%", left: "38%" }}>
+            {/* <h3 style={{ position: "relative", top: "40%", left: "38%" }}>
               지역을 선택해 주세요.
-            </h3>
+            </h3> */}
+            <ChatRoom />
           </ChatArea>
         </FlexWrap>
       </RootWrap>
@@ -55,7 +57,7 @@ const AsideCard = styled.aside`
 const ChatArea = styled.div`
   width: 50%;
   height: 90%;
-  background-color: #fbfcfc;
+  background-color: transparent;
   border-radius: 20px;
   margin-top: 30px;
 `;
@@ -69,7 +71,7 @@ const UserInfoWrap = styled.div`
   border-bottom: 2px solid #95a5a6;
 `;
 
-const AreaName = styled.h2`
+const AreaName = styled.h3`
   padding: 10px;
   margin: 5px 0;
   border-radius: 10px;
