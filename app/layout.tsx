@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { Inter } from "next/font/google";
+import { gowun_dodum } from "./fonts";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect } from "react";
@@ -13,8 +12,7 @@ import { userLoggedIn, userLoggedOut } from "store/features/user/authSlice";
 import { setUserInfo } from "store/features/user/userSlice";
 import GetUserInfo from "utils/getUserInfo";
 import { useRouter, usePathname } from "next/navigation";
-
-const inter = Inter({ subsets: ["latin"] });
+import { SocketProvider } from "@/components/providers/SocketProvider";
 
 export default function RootLayout({
   children,
@@ -23,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <StoreProvider>
-      <Layout>{children}</Layout>
+      <SocketProvider>
+        <Layout>{children}</Layout>
+      </SocketProvider>
     </StoreProvider>
   );
 }
@@ -66,7 +66,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <title>Haru Camping</title>
       </head>
-      <Body className={inter.className}>
+      <Body className={gowun_dodum.className}>
         <NavBar>
           <Row>
             <Col
