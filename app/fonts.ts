@@ -4,6 +4,7 @@ import {
   Sunflower,
   Gamja_Flower,
   Gaegu,
+  Gowun_Dodum,
 } from "next/font/google";
 
 export const inter = Inter({
@@ -29,6 +30,12 @@ export const gamja_flower = Gamja_Flower({
 });
 
 export const gaegu = Gaegu({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const gowun_dodum = Gowun_Dodum({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
