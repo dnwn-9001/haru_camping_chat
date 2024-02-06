@@ -1,5 +1,4 @@
 "use client";
-import { gowun_dodum } from "./fonts";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect } from "react";
@@ -66,7 +65,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <title>Haru Camping</title>
       </head>
-      <Body className={gowun_dodum.className}>
+      <Body>
         <NavBar>
           <Row>
             <Col
@@ -96,6 +95,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                     width={130}
                     height={90}
                     alt="하루캠핑 로고"
+                    priority={true}
                   />
                 </Link>
               </div>
