@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { useSocket } from "@/components/providers/SocketProvider";
+import { useAppSelector } from "@/store/hooks";
 
 const ChatHeader = () => {
+  const { area } = useAppSelector((state) => state.area);
   const { isConnected } = useSocket();
   return (
     <HeaderWrapper>
-      <h2 style={{ marginLeft: "25px" }}>지역명</h2>
+      <h2 style={{ marginLeft: "25px" }}>{area}</h2>
       {isConnected ? (
         <ConnectionIndicator style={{ backgroundColor: "green" }} />
       ) : (

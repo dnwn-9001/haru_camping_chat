@@ -14,7 +14,8 @@ export default async function handler(
 
     if (!data) return res.status(400).json({ error: "Content missing" });
 
-    res?.socket?.server?.io?.in(data.area).emit("message", data);
+    res?.socket?.server?.io?.socketsJoin(data.area);
+    res?.socket?.server?.io?.in(data.area).emit("room", data);
     res.status(201).json(data);
   } catch (error) {
     console.log("[MESSAGES_POST]", error);

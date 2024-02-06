@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authSliceReducer from "@/store/features/user/authSlice";
 import userSliceReducer from "@/store/features/user/userSlice";
 import chatSliceReducer from "@/store/features/chat/chatSlice";
+import areaSliceReducer from "@/store/features/chat/areaSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -9,6 +10,7 @@ export const makeStore = () => {
       auth: authSliceReducer,
       user: userSliceReducer,
       chat: chatSliceReducer,
+      area: areaSliceReducer,
     },
   });
 };
