@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSocket } from "@/components/providers/SocketProvider";
-import { SendOutlined } from "@ant-design/icons";
-import ChatInput from "@/components/chat/ChatInput";
+import { useAppSelector } from "@/store/hooks";
 
 interface content {
   type: "welcome" | "me" | "other";
@@ -11,30 +10,45 @@ interface content {
   message: string;
 }
 const ChatMessages = () => {
-  const [msg, setMsg] = useState("");
-  const [msgList, setMsgList] = useState<content[]>([]);
-  const [userName, setUserName] = useState("");
+  const { msgList } = useAppSelector((state) => state.chat);
   const { socket } = useSocket();
+  const messagesEndRef = useRef<null | HTMLLIElement>(null);
 
   useEffect(() => {
     if (!socket) return;
   }, [socket]);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [msgList]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <UnorderedList>
-      <WelcomeList>
-        <WelcomeLine />
-        장영인 님이 입장하셨습니다.
-        <WelcomeLine />
-      </WelcomeList>
-      <MyMessages>
-        <UserName>장영인</UserName>
-        <MyBubble>나의 메세지 자리</MyBubble>
-      </MyMessages>
-      <OtherMessages>
-        <UserName>장영우</UserName>
-        <OtherBubble>다른 사람 메세지</OtherBubble>
-      </OtherMessages>
+      {msgList.map((v, i) =>
+        v.type === "welcome" ? (
+          <WelcomeList key={`${i}_welcome`}>
+            <WelcomeLine />
+            장영인 님이 입장하셨습니다.
+            <WelcomeLine />
+          </WelcomeList>
+        ) : v.type === "me" ? (
+          <MyMessages key={`${i}_me`}>
+            <UserName>{v.userName}</UserName>
+            <MyBubble>{v.msg}</MyBubble>
+          </MyMessages>
+        ) : (
+          <OtherMessages key={`${i}_other`}>
+            <UserName>{v.userName}</UserName>
+            <OtherBubble>{v.msg}</OtherBubble>
+          </OtherMessages>
+        )
+      )}
+
+      <li ref={messagesEndRef} />
     </UnorderedList>
   );
 };

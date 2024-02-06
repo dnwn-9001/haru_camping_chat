@@ -19,6 +19,9 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
 `;
 
 const ConnectionIndicator = styled.div`

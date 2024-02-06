@@ -1,4 +1,4 @@
-import { userState } from "store/features/user/userSlice";
+import { UserState } from "store/features/user/userSlice";
 
 export default function GetUserInfo() {
   const userToken: string = window.localStorage.getItem(
@@ -6,7 +6,7 @@ export default function GetUserInfo() {
   )!;
   const { user } = JSON.parse(userToken);
   const { avatar_url, email, full_name } = user.user_metadata;
-  const userData: userState = {
+  const userData: UserState = {
     avatar_url: avatar_url,
     email: email,
     full_name: full_name,
