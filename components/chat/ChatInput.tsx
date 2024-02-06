@@ -10,56 +10,49 @@ import {
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import axios from "axios";
 import { useSocket } from "@/components/providers/SocketProvider";
-
-interface ChatInputProps {
-  apiUrl: string;
-}
+import { ChatInputProps } from "@/app/chat/page";
 
 const ChatInput = ({ apiUrl }: ChatInputProps) => {
   const dispatch = useAppDispatch();
-  const { msg } = useAppSelector((state) => state.chat);
+  const { msg, msgList } = useAppSelector((state) => state.chat);
   const { full_name, email } = useAppSelector((state) => state.user);
+  const { area } = useAppSelector((state) => state.area);
+
   const { socket } = useSocket();
 
   useEffect(() => {
     if (!socket) return;
 
-    function sMessageCallback(data: MsgData) {
-      const { userEmail, userName, msg } = data;
+    function messageCallback(data: MsgData) {
+      const { userEmail, userName, msg, area } = data;
       dispatch(
         setMsgList({
-          type: "other",
           userEmail: userEmail,
           userName: userName,
           msg: msg,
+          area: area,
         })
       );
     }
 
-    socket.on("message", sMessageCallback);
+    socket.on("message", messageCallback);
 
     return () => {
-      socket.off("message", sMessageCallback);
+      socket.off("message", messageCallback);
     };
-  }, [dispatch, socket]);
+  }, [dispatch, socket, msgList]);
 
   const onSubmitHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await axios.post(apiUrl, {
-      userEmail: email,
-      userName: full_name,
-      msg: msg,
-    });
-
-    dispatch(
-      setMsgList({
-        type: "me",
+    if (msg !== "") {
+      await axios.post(apiUrl, {
+        area: area,
         userEmail: email,
         userName: full_name,
         msg: msg,
-      })
-    );
-    dispatch(initializeCurrentMsg());
+      });
+      dispatch(initializeCurrentMsg());
+    }
   };
 
   const onChangeMsgHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

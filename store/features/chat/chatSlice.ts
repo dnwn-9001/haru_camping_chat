@@ -2,10 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "store/store";
 
 export interface MsgData {
-  type: "welcome" | "me" | "other";
+  type?: "welcome";
   userEmail: string;
   userName: string;
   msg: string;
+  area: string;
 }
 
 export interface ChatState {
@@ -31,10 +32,17 @@ export const chatSlice = createSlice({
     setMsgList: (state, action: PayloadAction<MsgData>) => {
       state.msgList.push(action.payload);
     },
+    initializeMsgList: (state) => {
+      state.msgList = [];
+    },
   },
 });
 
-export const { setCurrentMsg, initializeCurrentMsg, setMsgList } =
-  chatSlice.actions;
+export const {
+  setCurrentMsg,
+  initializeCurrentMsg,
+  setMsgList,
+  initializeMsgList,
+} = chatSlice.actions;
 export const selectMsg = (state: RootState) => state.chat.msg;
 export default chatSlice.reducer;

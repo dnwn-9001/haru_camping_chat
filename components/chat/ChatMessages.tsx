@@ -1,22 +1,12 @@
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
-import { useSocket } from "@/components/providers/SocketProvider";
+import { useEffect, useRef } from "react";
 import { useAppSelector } from "@/store/hooks";
 
-interface content {
-  type: "welcome" | "me" | "other";
-  userEmail: string;
-  userName: string;
-  message: string;
-}
 const ChatMessages = () => {
   const { msgList } = useAppSelector((state) => state.chat);
-  const { socket } = useSocket();
+  const { email } = useAppSelector((state) => state.user);
+  const { area } = useAppSelector((state) => state.area);
   const messagesEndRef = useRef<null | HTMLLIElement>(null);
-
-  useEffect(() => {
-    if (!socket) return;
-  }, [socket]);
 
   useEffect(() => {
     scrollToBottom();
@@ -29,22 +19,26 @@ const ChatMessages = () => {
   return (
     <UnorderedList>
       {msgList.map((v, i) =>
-        v.type === "welcome" ? (
-          <WelcomeList key={`${i}_welcome`}>
-            <WelcomeLine />
-            장영인 님이 입장하셨습니다.
-            <WelcomeLine />
-          </WelcomeList>
-        ) : v.type === "me" ? (
-          <MyMessages key={`${i}_me`}>
-            <UserName>{v.userName}</UserName>
-            <MyBubble>{v.msg}</MyBubble>
-          </MyMessages>
+        v.area === area ? (
+          v.type === "welcome" ? (
+            <WelcomeList key={`${i}_welcome`}>
+              <WelcomeLine />
+              {v.msg}
+              <WelcomeLine />
+            </WelcomeList>
+          ) : v.userEmail === email ? (
+            <MyMessages key={`${i}_me`}>
+              <UserName>{v.userName}</UserName>
+              <MyBubble>{v.msg}</MyBubble>
+            </MyMessages>
+          ) : (
+            <OtherMessages key={`${i}_other`}>
+              <UserName>{v.userName}</UserName>
+              <OtherBubble>{v.msg}</OtherBubble>
+            </OtherMessages>
+          )
         ) : (
-          <OtherMessages key={`${i}_other`}>
-            <UserName>{v.userName}</UserName>
-            <OtherBubble>{v.msg}</OtherBubble>
-          </OtherMessages>
+          ""
         )
       )}
 
