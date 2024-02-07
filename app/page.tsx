@@ -1,31 +1,32 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import Image from "next/image";
 
 const Home = () => {
   const [scrollNum, setScrollNum] = useState(0);
+  const ImageWrapRef = useRef<HTMLDivElement | null>(null);
 
-  // useEffect(() => {
-  //   const allParallaxImage = document.querySelectorAll(
-  //     `${ParallaxImageCommon}`
-  //   );
-  //   const totalNum = allParallaxImage.length;
+  useEffect(() => {
+    const childNodes = ImageWrapRef.current
+      ?.childNodes as NodeListOf<HTMLElement>;
+    const totalNum = childNodes?.length;
 
-  //   // window.addEventListener("scroll", () => {
-  //   //   setScrollNum(window.scrollY);
+    window.addEventListener("scroll", () => {
+      setScrollNum(window.scrollY);
 
-  //   //   allParallaxImage.forEach((item, index) => {
-  //   //     item.style.transform = `perspective(500px) translate3d(0,0, ${
-  //   //       scrollNum / (2 * (totalNum - index))
-  //   //     }px)`;
-  //   //   });
-  //   // });
-  // }, [scrollNum]);
+      childNodes?.forEach((item, index) => {
+        item.style.transform = `perspective(500px) translate3d(0,0, ${
+          scrollNum / (2 * (totalNum - index))
+        }px)`;
+      });
+    });
+  }, [scrollNum]);
 
   return (
     <>
       <MainPageSection>
-        <ImageWrap>
+        <ImageWrap ref={ImageWrapRef}>
           <ParallaxImageCommon></ParallaxImageCommon>
           <ParallaxImageCommon></ParallaxImageCommon>
           <ParallaxImageCommon></ParallaxImageCommon>
@@ -36,8 +37,10 @@ const Home = () => {
       <SubPageSection>
         <SubPageInnerWrap>
           <PhraseWrap>
-            <PhraseImg
+            <Image
               src="/images/main_phrase.png"
+              width={400}
+              height={300}
               alt="집에서 놀고 있는 캠핑 용품으로 용돈 벌어요!"
             />
           </PhraseWrap>
@@ -109,10 +112,6 @@ const SubPageInnerWrap = styled.div`
 const PhraseWrap = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const PhraseImg = styled.img`
-  width: 70%;
 `;
 
 const BtnWrap = styled.div`
