@@ -3,6 +3,7 @@ import authSliceReducer from "@/store/features/user/authSlice";
 import userSliceReducer from "@/store/features/user/userSlice";
 import chatSliceReducer from "@/store/features/chat/chatSlice";
 import areaSliceReducer from "@/store/features/chat/areaSlice";
+import lightControlSlice from "@/store/features/design/lightControlSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -11,6 +12,7 @@ export const makeStore = () => {
       user: userSliceReducer,
       chat: chatSliceReducer,
       area: areaSliceReducer,
+      lightControl: lightControlSlice,
     },
   });
 };

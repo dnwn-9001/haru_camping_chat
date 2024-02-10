@@ -2,10 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import { useAppSelector } from "@/store/hooks";
 
 const Home = () => {
   const [scrollNum, setScrollNum] = useState(0);
   const ImageWrapRef = useRef<HTMLDivElement | null>(null);
+  const { isBright } = useAppSelector((state) => state.lightControl);
 
   useEffect(() => {
     const childNodes = ImageWrapRef.current
@@ -26,7 +28,7 @@ const Home = () => {
   return (
     <>
       <MainPageSection>
-        <ImageWrap ref={ImageWrapRef}>
+        <ImageWrap ref={ImageWrapRef} $bright={isBright}>
           <ParallaxImageCommon></ParallaxImageCommon>
           <ParallaxImageCommon></ParallaxImageCommon>
           <ParallaxImageCommon></ParallaxImageCommon>
@@ -60,12 +62,15 @@ const MainPageSection = styled.section`
   top: 70px;
 `;
 
-const ImageWrap = styled.div`
+const ImageWrap = styled.div<{ $bright: boolean }>`
   height: 100vh;
+  background-color: ${({ $bright }) => ($bright ? "#fff" : "#212f3c")};
+  transition: background-color 0.5s ease;
 `;
 
 const ParallaxImageCommon = styled.div`
   position: fixed;
+  top: 108px;
   width: 100%;
   height: inherit;
   background-position: top center;

@@ -4,13 +4,14 @@ import Link from "next/link";
 import { Card, Button } from "antd";
 import styled from "styled-components";
 import { supabase } from "src/lib/supabase";
-import { useAppDispatch } from "store/hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 import { userLoggedOut } from "store/features/user/authSlice";
 import UserInfoCard from "./UserInfoCard";
 
 const UserProfile = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { isBright } = useAppSelector((state) => state.lightControl);
 
   //로그아웃
   async function signOut() {
@@ -29,26 +30,35 @@ const UserProfile = () => {
   }
 
   return (
-    <AccountBox
-      title="계정 정보"
-      extra={
-        <>
-          <Link href="/chat">
-            <Button>채팅</Button>
-          </Link>
-          <Button onClick={signOut}>로그아웃</Button>
-        </>
-      }
-    >
-      <UserInfoCard />
-    </AccountBox>
+    <AccountWrap $bright={isBright}>
+      <AccountBox
+        title="계정 정보"
+        extra={
+          <>
+            <Link href="/chat">
+              <Button>채팅</Button>
+            </Link>
+            <Button onClick={signOut}>로그아웃</Button>
+          </>
+        }
+      >
+        <UserInfoCard />
+      </AccountBox>
+    </AccountWrap>
   );
 };
+
+const AccountWrap = styled.div<{ $bright: boolean }>`
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+  background-color: ${({ $bright }) => ($bright ? "#fff" : "#212f3c")};
+  transition: background-color 0.5s ease;
+`;
 
 const AccountBox = styled(Card)`
   width: 50%;
   margin: auto;
-  margin-top: 100px;
 `;
 
 export default UserProfile;
