@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card, Button } from "antd";
 import styled from "styled-components";
-import { supabase } from "src/lib/supabase";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { userLoggedOut } from "store/features/user/authSlice";
-import UserInfoCard from "./UserInfoCard";
+import { supabase } from "@/src/lib/supabase";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { userLoggedOut } from "@/store/features/user/authSlice";
+import UserInfoCard from "@/components/user/UserInfoCard";
 
 const UserProfile = () => {
   const router = useRouter();

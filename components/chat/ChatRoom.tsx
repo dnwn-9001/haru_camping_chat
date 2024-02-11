@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import ChatInput from "@/components/chat/ChatInput";
 import ChatHeader from "@/components/chat/ChatHeader";

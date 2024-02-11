@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { useAppSelector } from "@/store/hooks";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/store/hooks";
 
 interface Props {
   src: string;

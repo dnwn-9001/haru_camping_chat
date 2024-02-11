@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
-import UserInfoCard from "components/user/UserInfoCard";
-import ChatRoom from "components/chat/ChatRoom";
+import UserInfoCard from "@/components/user/UserInfoCard";
+import ChatRoom from "@/components/chat/ChatRoom";
 import AreaCard from "@/components/chat/AreaCard";
 import { useAppSelector } from "@/store/hooks";
 

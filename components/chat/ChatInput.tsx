@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { SendOutlined } from "@ant-design/icons";
 import {
@@ -8,7 +9,6 @@ import {
   MsgData,
 } from "@/store/features/chat/chatSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import axios from "axios";
 import { useSocket } from "@/components/providers/SocketProvider";
 import { ChatInputProps } from "@/app/chat/page";
 
@@ -23,7 +23,7 @@ const ChatInput = ({ apiUrl }: ChatInputProps) => {
   useEffect(() => {
     if (!socket) return;
 
-    function messageCallback(data: MsgData) {
+    const messageCallback = (data: MsgData) => {
       const { userEmail, userName, msg, area } = data;
       dispatch(
         setMsgList({
@@ -33,7 +33,7 @@ const ChatInput = ({ apiUrl }: ChatInputProps) => {
           area: area,
         })
       );
-    }
+    };
 
     socket.on("message", messageCallback);
 

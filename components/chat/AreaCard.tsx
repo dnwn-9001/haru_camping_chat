@@ -90,7 +90,7 @@ const AreaCard = ({ apiUrl }: ChatInputProps) => {
     <div onClick={onClickArea}>
       {areaList.map((name, i) => (
         <AreaName key={`${i}_area`} selected={area === name}>
-          {name}
+          {name} 캠핑방
         </AreaName>
       ))}
     </div>

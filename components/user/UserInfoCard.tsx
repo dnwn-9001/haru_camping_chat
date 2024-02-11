@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { useAppSelector } from "store/hooks";
+import { useAppSelector } from "@/store/hooks";
 import {
   selectEmail,
   selectAvatarUrl,
   selectName,
-} from "store/features/user/userSlice";
+} from "@/store/features/user/userSlice";
 
 const UserInfoCard = () => {
   const email = useAppSelector(selectEmail);
