@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { useAppSelector } from "@/store/hooks";
+import { MsgData } from "@/store/features/chat/chatSlice";
 
 const ChatMessages = () => {
   const { msgList } = useAppSelector((state) => state.chat);
@@ -18,23 +19,23 @@ const ChatMessages = () => {
 
   return (
     <UnorderedList>
-      {msgList.map((v, i) =>
-        v.area === area ? (
-          v.type === "welcome" ? (
-            <WelcomeList key={`${i}_welcome`}>
+      {msgList.map((data: MsgData, index: number) =>
+        data.area === area ? (
+          data.type === "welcome" ? (
+            <WelcomeList key={`${index}_welcome`}>
               <WelcomeLine />
-              {v.msg}
+              {data.msg}
               <WelcomeLine />
             </WelcomeList>
-          ) : v.userEmail === email ? (
-            <MyMessages key={`${i}_me`}>
-              <UserName>{v.userName}</UserName>
-              <MyBubble>{v.msg}</MyBubble>
+          ) : data.userEmail === email ? (
+            <MyMessages key={`${index}_me`}>
+              <UserName>{data.userName}</UserName>
+              <MyBubble>{data.msg}</MyBubble>
             </MyMessages>
           ) : (
-            <OtherMessages key={`${i}_other`}>
-              <UserName>{v.userName}</UserName>
-              <OtherBubble>{v.msg}</OtherBubble>
+            <OtherMessages key={`${index}_other`}>
+              <UserName>{data.userName}</UserName>
+              <OtherBubble>{data.msg}</OtherBubble>
             </OtherMessages>
           )
         ) : (
