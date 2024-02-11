@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { useAppSelector } from "@/store/hooks";
+import MainBtns from "@/components/common/MainBtns";
 
 const Home = () => {
   const [scrollNum, setScrollNum] = useState(0);
@@ -43,12 +44,13 @@ const Home = () => {
               src="/images/main_phrase.png"
               width={400}
               height={300}
-              alt="집에서 놀고 있는 캠핑 용품으로 용돈 벌어요!"
+              alt="지역별 실시간 캠핑 정보 공유 '하루캠핑챗'"
+              priority={true}
             />
           </PhraseWrap>
           <BtnWrap>
-            <BtnImgCommon src="/images/btn_rental.png" alt="대여해요" />
-            <BtnImgCommon src="/images/btn_vote.png" alt="익명투표" />
+            <MainBtns src="/images/btn_chat.png" alt="채팅해요" />
+            <MainBtns src="/images/btn_vote.png" alt="익명투표" />
           </BtnWrap>
         </SubPageInnerWrap>
       </SubPageSection>
@@ -112,24 +114,18 @@ const SubPageInnerWrap = styled.div`
   height: 550px;
   display: flex;
   flex-direction: column;
+  border-radius: 25px;
 `;
 
 const PhraseWrap = styled.div`
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 `;
 
 const BtnWrap = styled.div`
   display: flex;
   justify-content: space-evenly;
-`;
-
-const BtnImgCommon = styled.img`
-  background-color: white;
-  width: 120px;
-  height: 120px;
-  border-radius: 20%;
-  cursor: pointer;
 `;
 
 export default Home;
