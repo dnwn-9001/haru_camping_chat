@@ -53,7 +53,7 @@ const AccountWrap = styled.div<{ $bright: boolean }>`
   height: 100%;
   padding-top: 80px;
   background-color: ${({ $bright }) => ($bright ? "#fff" : "#212f3c")};
-  transition: background-color 0.5s ease;
+  transition: var(--bg-color-transition);
 `;
 
 const AccountBox = styled(Card)`

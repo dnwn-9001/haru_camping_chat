@@ -102,7 +102,7 @@ const AreaName = styled.h3<{ selected?: boolean }>`
   margin: 5px 0;
   border-radius: 10px;
   background-color: ${({ selected }) => (selected ? "#fbfcfc" : "transparent")};
-  transition: background-color 0.5s ease;
+  transition: var(--bg-color-transition);
   &:hover {
     background-color: #fbfcfc;
     cursor: pointer;

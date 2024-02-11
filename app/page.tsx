@@ -67,7 +67,7 @@ const MainPageSection = styled.section`
 const ImageWrap = styled.div<{ $bright: boolean }>`
   height: 100vh;
   background-color: ${({ $bright }) => ($bright ? "#fff" : "#212f3c")};
-  transition: background-color 0.5s ease;
+  transition: var(--bg-color-transition);
 `;
 
 const ParallaxImageCommon = styled.div`

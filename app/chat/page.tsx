@@ -41,7 +41,7 @@ const RootWrap = styled.div<{ $bright: boolean }>`
   height: 88%;
   background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
   color: ${({ $bright }) => ($bright ? "#000" : "#808B96")};
-  transition: background-color 0.5s ease;
+  transition: var(--bg-color-transition);
 `;
 
 const FlexWrap = styled.div`
