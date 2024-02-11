@@ -36,7 +36,7 @@ const UserProfile = () => {
         extra={
           <>
             <Link href="/chat">
-              <Button>채팅</Button>
+              <Button style={{ marginRight: "3px" }}>채팅</Button>
             </Link>
             <Button onClick={signOut}>로그아웃</Button>
           </>
@@ -52,12 +52,15 @@ const AccountWrap = styled.div<{ $bright: boolean }>`
   width: 100%;
   height: 100%;
   padding-top: 80px;
-  background-color: ${({ $bright }) => ($bright ? "#fff" : "#212f3c")};
+  background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
   transition: var(--bg-color-transition);
+  background-image: url(/images/004.png);
+  background-position: top center;
+  background-repeat: no-repeat;
 `;
 
 const AccountBox = styled(Card)`
-  width: 50%;
+  width: 30%;
   margin: auto;
 `;
 

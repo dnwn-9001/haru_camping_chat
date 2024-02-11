@@ -14,8 +14,8 @@ const UserInfoCard = () => {
     <>
       <Image
         src={avatarUrl ? avatarUrl : "/images/userIcon.png"}
-        width={60}
-        height={60}
+        width={70}
+        height={70}
         alt="profile image"
         style={{ borderRadius: "50%" }}
       />
