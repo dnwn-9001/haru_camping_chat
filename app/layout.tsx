@@ -4,14 +4,16 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Switch, Row, Col } from "antd";
-import UserIcon from "components/user/UserIcon";
-import StoreProvider from "app/StoreProvider";
-import { useAppDispatch } from "store/hooks";
-import { userLoggedIn, userLoggedOut } from "store/features/user/authSlice";
-import { setUserInfo } from "store/features/user/userSlice";
-import GetUserInfo from "utils/getUserInfo";
+import UserIcon from "@/components/user/UserIcon";
+import StoreProvider from "@/app/StoreProvider";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { userLoggedIn, userLoggedOut } from "@/store/features/user/authSlice";
+import { setUserInfo } from "@/store/features/user/userSlice";
+import GetUserInfo from "@/utils/getUserInfo";
 import { useRouter, usePathname } from "next/navigation";
 import { SocketProvider } from "@/components/providers/SocketProvider";
+import { setLightState } from "@/store/features/design/lightControlSlice";
+import "../styles/global.css";
 
 export default function RootLayout({
   children,
@@ -29,6 +31,7 @@ export default function RootLayout({
 
 function Layout({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
+  const { isBright } = useAppSelector((state) => state.lightControl);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -60,13 +63,17 @@ function Layout({ children }: { children: React.ReactNode }) {
     }
   }, [dispatch, pathname, router]);
 
+  const onChange = (checked: boolean) => {
+    dispatch(setLightState(checked));
+  };
+
   return (
     <html lang="en">
       <head>
         <title>Haru Camping</title>
       </head>
       <Body>
-        <NavBar>
+        <NavBar $bright={isBright} $path={pathname!}>
           <Row>
             <Col
               xs={2}
@@ -89,7 +96,7 @@ function Layout({ children }: { children: React.ReactNode }) {
               }}
             >
               <div>
-                <Link href="/">
+                <Link href="/" scroll={false}>
                   <Image
                     src="/images/logo.png"
                     width={130}
@@ -124,11 +131,17 @@ const Body = styled.body`
   height: 100vh;
 `;
 
-const NavBar = styled.div`
+const NavBar = styled.div<{ $bright: boolean; $path: string }>`
   position: sticky;
   top: 0px;
+  background-color: ${({ $path, $bright }) =>
+    $path === "/chat"
+      ? $bright
+        ? "#d4efdf"
+        : "#212f3c"
+      : $bright
+      ? "#fff"
+      : "#212f3c"};
+  transition: background-color 0.5s ease;
+  z-index: 10;
 `;
-
-const onChange = (checked: boolean) => {
-  console.log(`switch to ${checked}`);
-};

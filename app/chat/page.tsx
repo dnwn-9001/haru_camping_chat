@@ -11,9 +11,10 @@ export interface ChatInputProps {
 
 const Chat = () => {
   const { area } = useAppSelector((state) => state.area);
+  const { isBright } = useAppSelector((state) => state.lightControl);
   return (
     <>
-      <RootWrap>
+      <RootWrap $bright={isBright}>
         <FlexWrap>
           <AsideCard>
             <UserInfoWrap>
@@ -36,9 +37,11 @@ const Chat = () => {
   );
 };
 
-const RootWrap = styled.div`
+const RootWrap = styled.div<{ $bright: boolean }>`
   height: 88%;
-  background-color: #d4efdf;
+  background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
+  color: ${({ $bright }) => ($bright ? "#000" : "#808B96")};
+  transition: background-color 0.5s ease;
 `;
 
 const FlexWrap = styled.div`
