@@ -14,7 +14,10 @@ const ChatMessages = () => {
   }, [msgList]);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({
+      block: "nearest",
+      behavior: "smooth",
+    });
   };
 
   return (
