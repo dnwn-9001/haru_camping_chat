@@ -18,6 +18,7 @@ const UserInfoCard = () => {
         height={70}
         alt="profile image"
         style={{ borderRadius: "50%" }}
+        priority={true}
       />
       <p style={{ margin: "auto", marginTop: "16px", fontSize: "xx-large" }}>
         {name}
