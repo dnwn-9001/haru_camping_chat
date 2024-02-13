@@ -1,4 +1,4 @@
-import { UserState } from "store/features/user/userSlice";
+import { UserState } from "@/store/features/user/userSlice";
 
 export default function GetUserInfo() {
   const userToken: string = window.localStorage.getItem(

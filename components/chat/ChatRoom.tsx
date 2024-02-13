@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import ChatInput from "@/components/chat/ChatInput";
 import ChatHeader from "@/components/chat/ChatHeader";
 import ChatMessages from "@/components/chat/ChatMessages";
 
-export default function ChatRoom() {
+const ChatRoom = () => {
   return (
     <RoomWrap>
       <ChatScreen>
@@ -14,7 +13,7 @@ export default function ChatRoom() {
       <ChatInput apiUrl="/api/socket/messages" />
     </RoomWrap>
   );
-}
+};
 
 const RoomWrap = styled.div`
   display: flex;
@@ -31,3 +30,5 @@ const ChatScreen = styled.div`
   border-radius: 10px;
   overflow-y: auto;
 `;
+
+export default ChatRoom;

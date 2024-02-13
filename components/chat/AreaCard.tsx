@@ -56,6 +56,7 @@ const AreaCard = ({ apiUrl }: ChatInputProps) => {
   }, [socket, dispatch]);
 
   const onClickArea = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     const { nodeName, innerText } = e.target as HTMLDivElement;
 
     const dispatchAndPost = async () => {
@@ -90,7 +91,7 @@ const AreaCard = ({ apiUrl }: ChatInputProps) => {
     <div onClick={onClickArea}>
       {areaList.map((name, i) => (
         <AreaName key={`${i}_area`} selected={area === name}>
-          {name}
+          {name} 캠핑방
         </AreaName>
       ))}
     </div>
@@ -102,7 +103,7 @@ const AreaName = styled.h3<{ selected?: boolean }>`
   margin: 5px 0;
   border-radius: 10px;
   background-color: ${({ selected }) => (selected ? "#fbfcfc" : "transparent")};
-  transition: background-color 0.5s ease;
+  transition: var(--bg-color-transition);
   &:hover {
     background-color: #fbfcfc;
     cursor: pointer;

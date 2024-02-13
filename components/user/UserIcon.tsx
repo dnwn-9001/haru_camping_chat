@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { useAppSelector } from "store/hooks";
+import { useAppSelector } from "@/store/hooks";
 import styled from "styled-components";
 
 const UserIcon = () => {

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { useAppSelector } from "store/hooks";
+import { useAppSelector } from "@/store/hooks";
 import {
   selectEmail,
   selectAvatarUrl,
   selectName,
-} from "store/features/user/userSlice";
+} from "@/store/features/user/userSlice";
 
 const UserInfoCard = () => {
   const email = useAppSelector(selectEmail);
@@ -14,10 +14,11 @@ const UserInfoCard = () => {
     <>
       <Image
         src={avatarUrl ? avatarUrl : "/images/userIcon.png"}
-        width={60}
-        height={60}
+        width={70}
+        height={70}
         alt="profile image"
         style={{ borderRadius: "50%" }}
+        priority={true}
       />
       <p style={{ margin: "auto", marginTop: "16px", fontSize: "xx-large" }}>
         {name}
