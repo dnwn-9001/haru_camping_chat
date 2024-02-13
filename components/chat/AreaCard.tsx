@@ -56,6 +56,7 @@ const AreaCard = ({ apiUrl }: ChatInputProps) => {
   }, [socket, dispatch]);
 
   const onClickArea = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     const { nodeName, innerText } = e.target as HTMLDivElement;
 
     const dispatchAndPost = async () => {

@@ -38,21 +38,27 @@ const Chat = () => {
 };
 
 const RootWrap = styled.div<{ $bright: boolean }>`
-  height: 88%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
   background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
   color: ${({ $bright }) => ($bright ? "#000" : "#808B96")};
   transition: var(--bg-color-transition);
+  overflow: hidden;
 `;
 
 const FlexWrap = styled.div`
   display: flex;
   justify-content: center;
   height: 100%;
+  margin-top: 108px;
 `;
 
 const AsideCard = styled.aside`
   width: 20%;
-  height: 90%;
+  height: 80%;
   background-color: trnasparent;
   border-radius: 20px;
   margin-right: 20px;
@@ -61,7 +67,7 @@ const AsideCard = styled.aside`
 
 const ChatArea = styled.div`
   width: 50%;
-  height: 90%;
+  height: 80%;
   background-color: #fbfcfc;
   border-radius: 20px;
   margin-top: 30px;

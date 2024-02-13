@@ -49,19 +49,22 @@ const UserProfile = () => {
 };
 
 const AccountWrap = styled.div<{ $bright: boolean }>`
+  position: absolute;
+  top: 0;
   width: 100%;
-  height: 100%;
-  padding-top: 80px;
+  height: 100vh;
   background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
   transition: var(--bg-color-transition);
   background-image: url(/images/004.png);
   background-position: top center;
   background-repeat: no-repeat;
+  overflow: hidden;
 `;
 
 const AccountBox = styled(Card)`
   width: 30%;
   margin: auto;
+  margin-top: 200px;
 `;
 
 export default UserProfile;
