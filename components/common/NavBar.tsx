@@ -87,7 +87,7 @@ const NavBarWrap = styled.div<{ $bright: boolean; $path: string }>`
   top: 0px;
   ${({ $path }) => ($path !== "/" ? "right: 0px; left:0px;" : "")};
   background-color: ${({ $path, $bright }) =>
-    $path === "/chat" || $path === "/profile"
+    $path !== "/"
       ? $bright
         ? "#d4efdf"
         : "#212f3c"

@@ -16,7 +16,7 @@ const Login = () => {
 const LoginWrap = styled.div<{ $bright: boolean }>`
   width: 100%;
   height: 100%;
-  background-color: ${({ $bright }) => ($bright ? "#fff" : "#212f3c")};
+  background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
   color: ${({ $bright }) => ($bright ? "#000" : "#fff")};
   transition: var(--bg-color-transition);
 `;

@@ -5,35 +5,26 @@ import { supabase } from "@/src/lib/supabase";
 import { Provider } from "@supabase/supabase-js";
 
 const LoginForm = () => {
-  // async function signIn(provider: Provider,  redirectUrl: string) {
-  //   await supabase.auth.signInWithOAuth({
-  //     provider: provider,
-  //     options: {
-  //       redirectTo: redirectUrl,
-  //     },
-  //   });
-  // }
+  const handleSignIn = (provider: Provider) => {
+    return () => {
+      signIn(provider);
+    };
+  };
 
-  async function signInWithKakao() {
+  async function signIn(provider: Provider) {
     await supabase.auth.signInWithOAuth({
-      provider: "kakao",
+      provider: provider,
       options: {
-        redirectTo: "http://localhost:3000/profile",
-      },
-    });
-  }
-
-  async function signInWithGoogle() {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:3000/profile",
+        redirectTo:
+          process.env.NODE_ENV === "production"
+            ? "haru-camping-chat.vercel.app/profile"
+            : "http://localhost:3000/profile",
       },
     });
   }
 
   return (
-    <>
+    <LoginBtnWrap>
       <LoginTitle>로그인</LoginTitle>
       <ButtonWrapper>
         <Image
@@ -42,7 +33,7 @@ const LoginForm = () => {
           height={65}
           alt="Sign in with KaKao"
           style={{ cursor: "pointer" }}
-          onClick={signInWithKakao}
+          onClick={handleSignIn("kakao")}
         />
         <GoogleBtnImg
           src="/images/web_light_sq_SI@3x.png"
@@ -50,12 +41,18 @@ const LoginForm = () => {
           height={65}
           alt="Sign in with Google"
           style={{ cursor: "pointer" }}
-          onClick={signInWithGoogle}
+          onClick={handleSignIn("google")}
         />
       </ButtonWrapper>
-    </>
+    </LoginBtnWrap>
   );
 };
+
+const LoginBtnWrap = styled.div`
+  padding-top: 108px;
+  display: flex;
+  flex-direction: column;
+`;
 
 const LoginTitle = styled.h1`
   margin: auto;
