@@ -33,7 +33,7 @@ const LoginForm = () => {
   }
 
   return (
-    <>
+    <LoginBtnWrap>
       <LoginTitle>로그인</LoginTitle>
       <ButtonWrapper>
         <Image
@@ -53,9 +53,15 @@ const LoginForm = () => {
           onClick={signInWithGoogle}
         />
       </ButtonWrapper>
-    </>
+    </LoginBtnWrap>
   );
 };
+
+const LoginBtnWrap = styled.div`
+  padding-top: 108px;
+  display: flex;
+  flex-direction: column;
+`;
 
 const LoginTitle = styled.h1`
   margin: auto;
