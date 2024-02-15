@@ -17,7 +17,7 @@ const LoginForm = () => {
       options: {
         redirectTo:
           process.env.NODE_ENV === "production"
-            ? "haru-camping-chat.vercel.app/profile"
+            ? "https://haru-camping-chat.vercel.app/profile"
             : "http://localhost:3000/profile",
       },
     });
