@@ -1,20 +1,15 @@
 "use client";
-import { useState } from "react";
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import Image from "next/image";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Switch, Row, Col } from "antd";
-import UserIcon from "components/user/UserIcon";
-import StoreProvider from "app/StoreProvider";
-import { useAppDispatch } from "store/hooks";
-import { userLoggedIn, userLoggedOut } from "store/features/user/authSlice";
-import { setUserInfo } from "store/features/user/userSlice";
-import GetUserInfo from "utils/getUserInfo";
+import NavBar from "@/components/common/NavBar";
+import StoreProvider from "@/components/providers/StoreProvider";
+import { useAppDispatch } from "@/store/hooks";
+import { userLoggedIn, userLoggedOut } from "@/store/features/user/authSlice";
+import { setUserInfo } from "@/store/features/user/userSlice";
+import GetUserInfo from "@/utils/getUserInfo";
 import { useRouter, usePathname } from "next/navigation";
-
-const inter = Inter({ subsets: ["latin"] });
+import { SocketProvider } from "@/components/providers/SocketProvider";
+import "../styles/global.css";
 
 export default function RootLayout({
   children,
@@ -23,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <StoreProvider>
-      <Layout>{children}</Layout>
+      <SocketProvider>
+        <Layout>{children}</Layout>
+      </SocketProvider>
     </StoreProvider>
   );
 }
@@ -64,55 +61,10 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>Haru Camping</title>
+        <title>Haru Camping Chat</title>
       </head>
-      <Body className={inter.className}>
-        <NavBar>
-          <Row>
-            <Col
-              xs={2}
-              md={2}
-              style={{
-                margin: "auto",
-                paddingLeft: "20px",
-              }}
-            >
-              <div>
-                <Switch defaultChecked onChange={onChange} />
-              </div>
-            </Col>
-            <Col
-              xs={20}
-              md={20}
-              style={{
-                marginTop: "14px",
-                textAlign: "center",
-              }}
-            >
-              <div>
-                <Link href="/">
-                  <Image
-                    src="/images/logo.png"
-                    width={130}
-                    height={90}
-                    alt="하루캠핑 로고"
-                  />
-                </Link>
-              </div>
-            </Col>
-            <Col
-              xs={2}
-              md={2}
-              style={{
-                margin: "auto",
-                textAlign: "right",
-                paddingRight: "30px",
-              }}
-            >
-              <UserIcon />
-            </Col>
-          </Row>
-        </NavBar>
+      <Body>
+        <NavBar />
         {children}
       </Body>
     </html>
@@ -123,12 +75,3 @@ const Body = styled.body`
   margin: 0;
   height: 100vh;
 `;
-
-const NavBar = styled.div`
-  position: sticky;
-  top: 0px;
-`;
-
-const onChange = (checked: boolean) => {
-  console.log(`switch to ${checked}`);
-};

@@ -1,0 +1,13 @@
+:root {
+  --bg-color-transition: background-color 0.5s ease;
+}
+
+@font-face {
+  font-family: "GowunDodum";
+  font-weight: 400;
+  src: url("/fonts/GowunDodum-Regular.ttf");
+}
+
+body {
+  font-family: GowunDodum, sans-serif;
+}

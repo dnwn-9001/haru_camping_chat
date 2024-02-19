@@ -1,51 +1,58 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { supabase } from "src/lib/supabase";
+import { supabase } from "@/src/lib/supabase";
+import { Provider } from "@supabase/supabase-js";
 
 const LoginForm = () => {
-  async function signInWithKakao() {
-    await supabase.auth.signInWithOAuth({
-      provider: "kakao",
-      options: {
-        redirectTo: "http://localhost:3000/profile",
-      },
-    });
-  }
+  const handleSignIn = (provider: Provider) => {
+    return () => {
+      signIn(provider);
+    };
+  };
 
-  async function signInWithGoogle() {
+  async function signIn(provider: Provider) {
     await supabase.auth.signInWithOAuth({
-      provider: "google",
+      provider: provider,
       options: {
-        redirectTo: "http://localhost:3000/profile",
+        redirectTo:
+          process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+            ? process.env.NEXT_PUBLIC_VERCEL_URL + "/profile"
+            : "http://localhost:3000/profile",
       },
     });
   }
 
   return (
-    <>
+    <LoginBtnWrap>
       <LoginTitle>로그인</LoginTitle>
       <ButtonWrapper>
         <Image
-          src="/images/kakao_login_large_wide.png"
+          src="/images/kakao_login_large_narrow.png"
           width={300}
-          height={60}
+          height={65}
           alt="Sign in with KaKao"
           style={{ cursor: "pointer" }}
-          onClick={signInWithKakao}
+          onClick={handleSignIn("kakao")}
         />
         <GoogleBtnImg
           src="/images/web_light_sq_SI@3x.png"
           width={300}
-          height={60}
+          height={65}
           alt="Sign in with Google"
           style={{ cursor: "pointer" }}
-          onClick={signInWithGoogle}
+          onClick={handleSignIn("google")}
         />
       </ButtonWrapper>
-    </>
+    </LoginBtnWrap>
   );
 };
+
+const LoginBtnWrap = styled.div`
+  padding-top: 108px;
+  display: flex;
+  flex-direction: column;
+`;
 
 const LoginTitle = styled.h1`
   margin: auto;
