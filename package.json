@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start NODE_ENV=production",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "axios": "^1.6.7",
     "next": "13.5.4",
     "next-redux-wrapper": "^8.1.0",
+    "pm2": "^5.3.1",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^8.1.3",
