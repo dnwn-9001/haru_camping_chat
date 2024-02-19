@@ -16,8 +16,8 @@ const LoginForm = () => {
       provider: provider,
       options: {
         redirectTo:
-          process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-            ? process.env.NEXT_PUBLIC_VERCEL_URL + "/profile"
+          process.env.NODE_ENV === "production"
+            ? "http://54.180.25.185:80/profile"
             : "http://localhost:3000/profile",
       },
     });
