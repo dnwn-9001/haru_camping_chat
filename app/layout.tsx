@@ -36,11 +36,11 @@ function Layout({ children }: { children: React.ReactNode }) {
       dispatch(userLoggedIn());
       switch (pathname) {
         case "/login":
-          dispatch(setUserInfo(GetUserInfo()));
+          dispatch(setUserInfo(GetUserInfo()!));
           router.push("/profile");
           break;
         default:
-          dispatch(setUserInfo(GetUserInfo()));
+          dispatch(setUserInfo(GetUserInfo()!));
           break;
       }
     } else {
