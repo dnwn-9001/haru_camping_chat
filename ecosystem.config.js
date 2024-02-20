@@ -11,7 +11,7 @@ module.exports = {
       },
       env_production: {
         NODE_ENV: "production",
-        NEXT_PUBLIC_DOMAIN_URL: "54.180.25.185",
+        NEXT_PUBLIC_DOMAIN_URL: "http://52.79.162.135",
         PORT: 80,
       },
     },

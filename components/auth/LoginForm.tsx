@@ -17,7 +17,7 @@ const LoginForm = () => {
       options: {
         redirectTo:
           process.env.NODE_ENV === "production"
-            ? "http://54.180.25.185:80/profile"
+            ? "http://52.79.162.135:80/profile"
             : "http://localhost:3000/profile",
       },
     });
