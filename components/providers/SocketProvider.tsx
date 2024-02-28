@@ -23,8 +23,8 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const socketInstance = new (ClientIO as any)(
-      process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-        ? "http://52.79.162.135:80/profile"
+      process.env.NODE_ENV === "production"
+        ? "http://haru-camping-chat.co.kr/"
         : process.env.NEXT_PUBLIC_SITE_URL!,
       {
         path: "/api/socket/io",
