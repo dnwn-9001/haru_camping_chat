@@ -28,7 +28,7 @@ const LoginForm = () => {
       <LoginTitle>로그인</LoginTitle>
       <ButtonWrapper>
         <Image
-          src="/images/kakao_login_large_narrow.png"
+          src="https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/kakao_login_large_narrow.png"
           width={300}
           height={65}
           alt="Sign in with KaKao"
@@ -36,7 +36,7 @@ const LoginForm = () => {
           onClick={handleSignIn("kakao")}
         />
         <GoogleBtnImg
-          src="/images/web_light_sq_SI@3x.png"
+          src="https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/web_light_sq_SI%403x.png"
           width={300}
           height={65}
           alt="Sign in with Google"

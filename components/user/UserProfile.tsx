@@ -55,7 +55,7 @@ const AccountWrap = styled.div<{ $bright: boolean }>`
   height: 100vh;
   background-color: ${({ $bright }) => ($bright ? "#d4efdf" : "#212f3c")};
   transition: var(--bg-color-transition);
-  background-image: url(/images/004.png);
+  background-image: url(https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/004.png);
   background-position: top center;
   background-repeat: no-repeat;
   overflow: hidden;

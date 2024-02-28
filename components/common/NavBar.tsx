@@ -57,7 +57,7 @@ const NavBar = () => {
           <div>
             <Link href="/" scroll={false}>
               <Image
-                src="/images/logo.png"
+                src="https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/logo.png"
                 width={150}
                 height={90}
                 alt="하루캠핑 로고"

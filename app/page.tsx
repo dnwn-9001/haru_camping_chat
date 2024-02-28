@@ -41,7 +41,7 @@ const Home = () => {
         <SubPageInnerWrap>
           <PhraseWrap>
             <Image
-              src="/images/main_phrase.png"
+              src="https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/main_phrase.png"
               width={400}
               height={300}
               alt="지역별 실시간 캠핑 정보 공유 '하루캠핑챗'"
@@ -49,8 +49,14 @@ const Home = () => {
             />
           </PhraseWrap>
           <BtnWrap>
-            <MainBtns src="/images/btn_chat.png" alt="채팅해요" />
-            <MainBtns src="/images/btn_vote.png" alt="익명투표" />
+            <MainBtns
+              src="https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/btn_chat.png"
+              alt="채팅해요"
+            />
+            <MainBtns
+              src="https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/btn_vote.png"
+              alt="익명투표"
+            />
           </BtnWrap>
         </SubPageInnerWrap>
       </SubPageSection>
@@ -80,23 +86,23 @@ const ParallaxImageCommon = styled.div`
   background-repeat: no-repeat;
 
   &:nth-child(1) {
-    background-image: url(/images/004.png);
+    background-image: url(https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/004.png);
   }
 
   &:nth-child(2) {
-    background-image: url(/images/005.png);
+    background-image: url(https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/005.png);
   }
 
   &:nth-child(3) {
-    background-image: url(/images/006.png);
+    background-image: url(https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/006.png);
   }
 
   &:nth-child(4) {
-    background-image: url(/images/007.png);
+    background-image: url(https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/007.png);
   }
 
   &:nth-child(5) {
-    background-image: url(/images/008.png);
+    background-image: url(https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/008.png);
   }
 `;
 

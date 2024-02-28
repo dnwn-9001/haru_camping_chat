@@ -13,7 +13,11 @@ const UserInfoCard = () => {
   return (
     <>
       <Image
-        src={avatarUrl ? avatarUrl : "/images/userIcon.png"}
+        src={
+          avatarUrl
+            ? avatarUrl
+            : "https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/userIcon.png"
+        }
         width={70}
         height={70}
         alt="profile image"
