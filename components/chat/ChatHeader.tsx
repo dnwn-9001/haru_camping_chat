@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useSocket } from "@/components/providers/SocketProvider";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { initializeArea } from "@/store/features/chat/areaSlice";
+import { initializeMsgList } from "@/store/features/chat/chatSlice";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const ChatHeader = () => {
@@ -13,8 +14,10 @@ const ChatHeader = () => {
     const result = confirm(
       `${area} 채팅방에서 퇴장하시겠습니까? \n퇴장 처리된 방의 채팅 내역은 모두 삭제됩니다.`
     );
-    if (result) dispatch(initializeArea());
-    else return;
+    if (result) {
+      dispatch(initializeArea());
+      dispatch(initializeMsgList());
+    } else return;
   };
 
   return (
