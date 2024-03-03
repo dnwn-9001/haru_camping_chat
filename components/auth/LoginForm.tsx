@@ -17,7 +17,7 @@ const LoginForm = () => {
       options: {
         redirectTo:
           process.env.NODE_ENV === "production"
-            ? "http://52.79.162.135:80/profile"
+            ? "http://haru-chat.o-r.kr/profile"
             : "http://localhost:3000/profile",
       },
     });
