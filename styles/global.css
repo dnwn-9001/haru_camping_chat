@@ -5,7 +5,7 @@
 @font-face {
   font-family: "GowunDodum";
   font-weight: 400;
-  src: url("/fonts/GowunDodum-Regular.ttf");
+  src: url("https://haru-camping-chat-s3.s3.ap-northeast-2.amazonaws.com/GowunDodum-Regular.ttf");
 }
 
 body {
