@@ -17,7 +17,7 @@ const LoginForm = () => {
       options: {
         redirectTo:
           process.env.NODE_ENV === "production"
-            ? "http://haru-chat.o-r.kr/profile"
+            ? "haru-camping-chat.co.kr/profile"
             : "http://localhost:3000/profile",
       },
     });
